@@ -55,6 +55,19 @@ return this.data;
       }
     }
   }
+
+  getAllKeys(){
+    let keys = [];
+    for(let i=0; i<this.data.length; i++){
+      if(this.data[i]!== undefined){
+        let item =this.data[i];
+        for(let j = 0; j<item.length; j++){
+          keys.push(item[j][0])
+        }
+      }
+    }
+    return keys;
+  }
   
 }
 const myHashTable = new HashTable(50);
@@ -62,4 +75,4 @@ myHashTable.insert("Mia", 14);
 myHashTable.insert("Sol", 0.4);
 myHashTable.insert("Alberti", 40);
 myHashTable.insert("Jolie",50);
-
+myHashTable.getAllKeys();

@@ -27,6 +27,22 @@ class MySinglyLinkedList {
 
         this.length = 1;
     }
+    append(value) {
+        const newNode = new Node(value);
+        this.tail.next = newNode;
+        this.tail = newNode;
+        this.length++;
+
+        return this;
+    }
+    prepend(value){
+        const newNode = new Node(value);        
+        newNode.next = this.head;
+        this.head= newNode;
+        this.length++;
+
+        return this;
+    }
 }
 
 class Node {
@@ -36,4 +52,6 @@ class Node {
     }
 }
 let myLinkedList = new MySinglyLinkedList(1);
-
+myLinkedList.append(5);
+myLinkedList.append(2);
+myLinkedList.prepend(10);

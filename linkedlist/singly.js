@@ -43,6 +43,48 @@ class MySinglyLinkedList {
 
         return this;
     }
+    insert(index, value){
+        if(index >= this.length){
+            return this.append(value);
+        }
+
+        const newNode = new Node(value);
+        const firstPointer = this.getIndex(index-1);
+        const holdingPointer = firstPointer.next;
+        firstPointer.next = newNode;
+        newNode.next = holdingPointer;
+
+        this.length++;
+        return this;
+    }
+    getIndex(index){
+        let counter = 0;
+        let currentNode = this.head;
+
+        while(counter !== index) {
+            currentNode = currentNode.next;
+            counter++;
+        }
+        return currentNode;
+    }
+    delete(index) {
+        if(index === 0){
+            this.head = this.head.next;
+            this.head.next = this.getIndex(index+1);
+        } else if(index === this.length-1){
+            const firstPointer = this.getIndex(index-1);            
+            this.tail = firstPointer;
+            this.tail.next = null;
+        } else if(index > 0 && index < this.length){
+            const firstPointer = this.getIndex(index-1);
+            firstPointer.next = this.getIndex(index+1);
+        }
+
+       this.length--;
+       
+       return this;
+    }
+     
 }
 
 class Node {
@@ -55,3 +97,6 @@ let myLinkedList = new MySinglyLinkedList(1);
 myLinkedList.append(5);
 myLinkedList.append(2);
 myLinkedList.prepend(10);
+myLinkedList.delete(0);
+//myLinkedList.delete(3);
+//myLinkedList.delete(1);

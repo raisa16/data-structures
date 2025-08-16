@@ -70,7 +70,6 @@ class MySinglyLinkedList {
     delete(index) {
         if(index === 0){
             this.head = this.head.next;
-            this.head.next = this.getIndex(index+1);
         } else if(index === this.length-1){
             const firstPointer = this.getIndex(index-1);            
             this.tail = firstPointer;
@@ -81,7 +80,7 @@ class MySinglyLinkedList {
         }
 
        this.length--;
-       
+
        return this;
     }
      

@@ -4,38 +4,37 @@ class Node {
         this.next = null;
     }
 }
-class Stack {
+class Queue {
     constructor() {
-        this.top = null;
-        this.bottom = null;
+        this.first = null;
+        this.last = null;
         this.length = 0;
 
     }
     peek() {
-        return this.top;
+        return this.first;
     }
-    push(value){
+   enqueue(value){
         const newNode = new Node(value);
         
         if(this.length === 0){
-        this.top= newNode;
-        this.bottom = value;
+        this.first= newNode;
+        this.last = newNode;
         }
         else {
-            const holdingPointer = this.top;
-            this.top= newNode;
-            this.top.next = holdingPointer;
+             this.last.next = newNode;
+            this.last= newNode;
+           
         }
         this.length++;
         return this;
     }
-    pop() {
-        const item = this.top;
+     dequeue() {
         if(this.length === 1){
-            this.top = null;
-            this.bottom = null;
+            this.first = null;
+            this.last = null;
         } else {
-            this.top = this.top.next;
+            this.first = this.first.next;
         }
         this.length--;
         return this;
@@ -52,9 +51,9 @@ class Stack {
 
 }
 
-const myStack = new Stack();
-myStack.push("hola");
-myStack.push("soy");
-myStack.push("Jolie");
-myStack.pop();
-myStack;
+const myQueue = new Queue();
+myQueue.enqueue("hola");
+myQueue.enqueue("soy");
+myQueue.enqueue("Jolie");
+//myQueue.dequeue();
+myQueue;

@@ -39,12 +39,12 @@ class Queue {
         this.length--;
         return this;
     }
-    // Check if the stack is empty
+    // Check if the queue is empty
   isEmpty() {
       return this.length === 0;
   }
 
-  // Get the size of the stack
+  // Get the size of the queue
   size() {
       return this.length;
   }
